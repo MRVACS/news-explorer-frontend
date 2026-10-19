@@ -1,0 +1,41 @@
+.navigation {
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  color: #fff;
+  font-size: 18px;
+  margin-right: 7.22%;
+}
+.navigation__nav {
+  display: flex;
+  list-style-type: none;
+  list-style: none;
+  gap: 20px;
+  align-items: center;
+}
+
+.navigation__link {
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  /*   color: rgba(26, 27, 34, 1); */
+  color: #fff;
+}
+.navigation__button {
+  display: flex;
+  background-color: transparent;
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 100px;
+  height: 48px;
+  align-items: center;
+  width: auto;
+}
+.navigation__button-text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  /*  color: rgba(26, 27, 34, 1); */
+  color: #fff;
+}
