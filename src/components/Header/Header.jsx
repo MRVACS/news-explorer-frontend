@@ -1,10 +1,8 @@
 import Navigation from "../Navigation/Navigation";
 import SearchForm from "../SearchForm/SearchForm";
-import line from "../../images/bg.png";
 import "./Header.css";
 
-export default function Header(props) {
-  const { handleOpenPopup } = props;
+export default function Header() {
   return (
     <header className="header">
       <div className="header__container">
@@ -16,7 +14,6 @@ export default function Header(props) {
           <SearchForm />
         </div>
       </div>
-      {/* <img className="header__line" src={line} alt="Line" /> */}
     </header>
   );
 }

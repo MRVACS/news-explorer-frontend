@@ -5,7 +5,7 @@ import Footer from "../Footer/Footer";
 import SavedNews from "../SavedNews/SavedNews";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { TheContext } from "../../contexts/TheContext.js";
+import { AppContext } from "../../contexts/AppContext.js";
 import newsApi from "../../utils/NewsApi.js";
 
 function App() {
@@ -14,29 +14,8 @@ function App() {
   const [savedCards, setSavedCards] = useState([]);
   const [popup, setPopup] = useState(null);
   const [search, setSearch] = useState(false);
-
-  /*  useEffect(() => {
-    newsApi
-      .getNews()
-      .then((data) => {
-        setCards(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []); */
-
-  /* useEffect(() => {
-    if (!isLoggedIn) return;
-    savednewsApi
-      .getNews()
-      .then((data) => {
-        setCards(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [isLoggedIn]); */
+  const [isLoading, setIsLoading] = useState(false);
+  const [count, setCount] = useState(3);
 
   function handleOpenPopup(popup) {
     setPopup(popup);
@@ -46,11 +25,12 @@ function App() {
   }
 
   async function handleNewsSearch(keyword) {
+    setCount(3);
+    setIsLoading(true);
     try {
       const articles = await newsApi.getNews(keyword);
-
+      setIsLoading(false);
       setCards(articles);
-      console.log(cards);
       setSearch(true);
     } catch (error) {
       console.error("Error fetching news:", error);
@@ -58,15 +38,17 @@ function App() {
   }
 
   return (
-    <TheContext.Provider
+    <AppContext.Provider
       value={{
         isLoggedIn,
-        setIsLoggedIn,
         cards,
         savedCards,
         handleOpenPopup,
         handleNewsSearch,
         search,
+        isLoading,
+        count,
+        setCount,
       }}
     >
       <div className="page">
@@ -86,7 +68,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
-    </TheContext.Provider>
+    </AppContext.Provider>
   );
 }
 

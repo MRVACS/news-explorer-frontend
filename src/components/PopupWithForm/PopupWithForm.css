@@ -15,7 +15,7 @@
 .popup__content {
   background-color: rgba(255, 255, 255, 1);
   border-radius: 16px;
-  /* height: 380px; */
+  height: 380px;
   width: 430px;
   display: flex;
   flex-direction: column;
@@ -30,4 +30,10 @@
   color: rgba(26, 27, 34, 1);
   text-align: left;
   width: 83.26%;
+}
+
+@media (max-width: 320px) {
+  .popup__content {
+    width: 100%;
+  }
 }

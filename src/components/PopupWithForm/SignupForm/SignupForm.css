@@ -53,6 +53,10 @@
   color: rgba(182, 188, 191, 1);
   cursor: not-allowed;
 }
+.form__switch {
+  display: flex;
+  justify-content: center;
+}
 .form__switch-text {
   font-family: "Inter", sans-serif;
   font-size: 14px;
@@ -64,6 +68,8 @@
   font-size: 14px;
   font-weight: 400;
   color: rgba(47, 113, 229, 1);
+  border: none;
+  background-color: white;
 }
 input::placeholder {
   color: rgba(209, 210, 214, 1);

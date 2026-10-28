@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
-import { TheContext } from "../../contexts/TheContext.js";
+import { AppContext } from "../../contexts/AppContext.js";
 import "./SearchForm.css";
 
 export default function SearchForm() {
-  const { handleNewsSearch } = useContext(TheContext);
+  const { handleNewsSearch } = useContext(AppContext);
   const [keyword, setKeyword] = useState("");
 
   const handleKeywordChange = (event) => {

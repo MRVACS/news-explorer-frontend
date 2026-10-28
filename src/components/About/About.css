@@ -38,6 +38,7 @@
   font-size: 18px;
   color: rgba(26, 27, 34, 1);
   text-align: left;
+  width: 69.44%;
 }
 
 @media (max-width: 768px) {
@@ -49,6 +50,9 @@
   }
   .author__about-title {
     margin-top: 40px;
+  }
+  .author__about-info {
+    width: 92.01%;
   }
 }
 

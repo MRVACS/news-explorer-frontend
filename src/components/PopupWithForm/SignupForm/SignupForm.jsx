@@ -1,11 +1,15 @@
 import { useContext, useState } from "react";
-import { TheContext } from "../../../contexts/TheContext.js";
+import { useForm } from "react-hook-form";
+import { AppContext } from "../../../contexts/AppContext.js";
 import LoginForm from "../LoginForm/LoginForm";
 import "./SignupForm.css";
 
 export default function SignupForm() {
-  const { handleOpenPopup } = useContext(TheContext);
-
+  const { handleOpenPopup } = useContext(AppContext);
+  const {
+    register,
+    formState: { errors },
+  } = useForm();
   const loginPopup = { title: "Iniciar Sesión", children: <LoginForm /> };
 
   const handleSubmit = (e) => {
@@ -19,8 +23,12 @@ export default function SignupForm() {
       <form className="signup__form form" onSubmit={handleSubmit}>
         {/* <h2 className="form__title">Inscribirse</h2> */}
         <div className="form__input-section">
-          <h3 className="form__input-title">Correo electrónico</h3>
+          <label className="form__input-title" htmlFor="enail">
+            Correo electrónico
+          </label>
           <input
+            {...register("email", { required: true })}
+            aria-invalid={errors.email ? "true" : "false"}
             className="form__input"
             placeholder="Introduce tu correo electrónico"
             type="email"
@@ -28,11 +36,17 @@ export default function SignupForm() {
             name="email"
             required
           />
-          <span className="form__input-error"></span>
+          {errors.email?.type === "required" && (
+            <span role="alert" className="form__input-error"></span>
+          )}
         </div>
         <div className="form__input-section">
-          <h3 className="form__input-title">Contraseña</h3>
+          <label className="form__input-title" htmlFor="password">
+            Contraseña
+          </label>
           <input
+            {...register("password", { required: true })}
+            aria-invalid={errors.password ? "true" : "false"}
             className="form__input"
             placeholder="Introduce tu contraseña"
             type="password"
@@ -40,11 +54,17 @@ export default function SignupForm() {
             name="password"
             required
           />
-          <span className="form__input-error"></span>
+          {errors.password?.type === "required" && (
+            <span role="alert" className="form__input-error"></span>
+          )}
         </div>
         <div className="form__input-section">
-          <h3 className="form__input-title">Nombre de usuario</h3>
+          <label className="form__input-title" htmlFor="username">
+            Nombre de usuario
+          </label>
           <input
+            {...register("username", { required: true })}
+            aria-invalid={errors.username ? "true" : "false"}
             className="form__input"
             placeholder="Introduce tu nombre de usuario"
             type="text"
@@ -52,18 +72,22 @@ export default function SignupForm() {
             name="username"
             required
           />
+          {errors.username?.type === "required" && (
+            <span role="alert" className="form__input-error"></span>
+          )}
         </div>
         <button type="submit" className="form__submit-button">
           Inscribirse
         </button>
         <div className="form__switch">
           {/* <p>o</p> */}
-          <p
+          <button
+            type="button"
             className="form__switch-link"
             onClick={() => handleOpenPopup(loginPopup)}
           >
             o iniciar sesión
-          </p>
+          </button>
         </div>
       </form>
     </div>

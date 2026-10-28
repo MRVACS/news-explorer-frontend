@@ -1,10 +1,15 @@
 import { useContext } from "react";
+import { useForm } from "react-hook-form";
 import SignupForm from "../SignupForm/SignupForm";
 import "./LoginForm.css";
-import { TheContext } from "../../../contexts/TheContext.js";
+import { AppContext } from "../../../contexts/AppContext.js";
 
 export default function LoginForm() {
-  const { handleOpenPopup } = useContext(TheContext);
+  const { handleOpenPopup } = useContext(AppContext);
+  const {
+    register,
+    formState: { errors },
+  } = useForm();
   const signupPopup = { title: "Inscribirse", children: <SignupForm /> };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,40 +20,51 @@ export default function LoginForm() {
       <form className="login__form form" onSubmit={handleSubmit}>
         {/*  <h2 className="form__title">Iniciar Sesión</h2> */}
         <div className="form__input-section">
-          <h3 className="form__input-title">Correo electrónico</h3>
+          <label className="form__input-title" htmlFor="email">
+            Correo electrónico
+          </label>
           <input
+            {...register("email", { required: true })}
+            aria-invalid={errors.email ? "true" : "false"}
             className="form__input"
             placeholder="Introduce tu correo electrónico"
             type="email"
             id="email"
             name="email"
-            required
           />
-          <span className="form__input-error"></span>
+          {errors.email?.type === "required" && (
+            <span role="alert" className="form__input-error"></span>
+          )}
         </div>
         <div className="form__input-section">
-          <h3 className="form__input-title">Contraseña</h3>
+          <label className="form__input-title" htmlFor="password">
+            Contraseña
+          </label>
           <input
+            {...register("password", { required: true })}
+            aria-invalid={errors.password ? "true" : "false"}
             className="form__input"
             placeholder="Introduce tu contraseña"
             type="password"
             id="password"
             name="password"
-            required
           />
-          <span className="form__input-error"></span>
+          {errors.password?.type === "required" && (
+            <span role="alert" className="form__input-error"></span>
+          )}
         </div>
         <button type="submit" className="form__submit-button">
           Iniciar Sesión
         </button>
         <div className="form__switch">
           {/*  <p className="form__switch-text">o</p> */}
-          <p
+          <button
+            type="button"
             className="form__switch-link"
             onClick={() => handleOpenPopup(signupPopup)}
           >
             o inscribirse
-          </p>
+          </button>
         </div>
       </form>
     </div>

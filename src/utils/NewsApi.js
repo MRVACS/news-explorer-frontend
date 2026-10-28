@@ -1,8 +1,7 @@
 class NewsApi {
-  constructor({ url, q, apiKey, from, to, pageSize }) {
+  constructor({ url, apiKey, from, to, pageSize }) {
     this.apiKey = apiKey;
     this.url = url;
-    this.q = q;
     this.from = from;
     this.to = to;
     this.pageSize = pageSize;
@@ -10,8 +9,12 @@ class NewsApi {
 
   async getNews(keyword) {
     const response = await fetch(
-      `${this.url}/everything?q=${keyword}&from=${this.from}&to=${this.to}&sortBy=popularity&pageSize=${this.pageSize}&apiKey=${this.apiKey}`
+      `${this.url}everything?q=${keyword}&from=${this.from}&to=${this.to}&sortBy=popularity&pageSize=${this.pageSize}&apiKey=${this.apiKey}`
     );
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}`);
+    }
+
     const data = await response.json();
     /*  console.log(data);
     console.log(data.articles); */
@@ -19,11 +22,15 @@ class NewsApi {
   }
 }
 
+const toDate = new Date();
+const fromDate = new Date();
+fromDate.setDate(toDate.getDate() - 7);
+
 const newsApi = new NewsApi({
   url: "https://newsapi.org/v2/",
-  apiKey: "4b7f9049ad724fa2bb750be971cff9f5",
-  from: "2026-10-05",
-  to: "2026-10-14",
+  apiKey: import.meta.env.VITE_NEWS_API_KEY,
+  from: fromDate.toISOString().split("T")[0],
+  to: toDate.toISOString().split("T")[0],
   pageSize: 100,
 });
 
