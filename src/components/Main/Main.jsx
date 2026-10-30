@@ -2,7 +2,7 @@ import About from "../About/About";
 import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext.js";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import PreLoader from "../PreLoader/PreLoader.jsx";
+import PreLoader from "../LoadingCircle/LoadingCircle.jsx";
 import NewsCardList from "../NewsCardList/NewsCardList.jsx";
 import "./Main.css";
 
