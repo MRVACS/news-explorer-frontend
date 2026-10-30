@@ -1,0 +1,139 @@
+.seeker {
+  display: flex;
+  flex-direction: column;
+  /* background-image: url("../../images/seekerback.jpg"); */
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  background-color: transparent;
+}
+.seeker__header {
+  color: #fff;
+}
+.seeker__header-text {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+}
+.seeker__header-info {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+.seeker__form {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  width: 42.22%;
+}
+.form__title {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  margin-bottom: 32px;
+  text-align: left;
+  color: rgba(255, 255, 255, 1);
+}
+
+.form__info {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 64px;
+  text-align: left;
+  color: rgba(255, 255, 255, 1);
+}
+.form__search-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: white; */
+  height: 64px;
+  margin-bottom: 80px;
+  /* border-radius: 100px;
+  overflow: hidden; */
+}
+.form__search-button {
+  position: absolute;
+  right: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  background-color: rgba(47, 113, 229, 1);
+  height: 100%;
+  border-radius: 100px;
+  padding: 0;
+  width: 168px;
+  border: none;
+  color: white;
+  z-index: 2;
+}
+.form__search-input {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  width: 100%;
+  /* height: 100%; */
+  background-color: rgba(255, 255, 255, 1);
+  border: none;
+  border-radius: 100px;
+}
+/* .form__search-input:focus {
+  background-color: inherit;
+  border: none;
+  outline: none;
+} */
+.form__search-input:-webkit-autofill,
+.form__search-input:-webkit-autofill:hover,
+.form__search-input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 1) inset;
+  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 1) inset;
+  -webkit-text-fill-color: rgba(26, 27, 34, 1);
+}
+input:focus {
+  border: none;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .seeker__form {
+    width: 58.854%;
+  }
+  .form__search-button {
+    width: 35.4%;
+  }
+}
+
+@media (max-width: 320px) {
+  .seeker__form {
+    width: 90%;
+  }
+  .form__title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+  .form__info {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .form__search-bar {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+    max-height: 40%;
+    min-height: 110px;
+    background-color: transparent;
+  }
+  .form__search-input {
+    width: 100%;
+    height: 56px;
+  }
+  .form__search-button {
+    width: 100%;
+    height: 56px;
+    z-index: 0;
+    position: relative;
+  }
+}
