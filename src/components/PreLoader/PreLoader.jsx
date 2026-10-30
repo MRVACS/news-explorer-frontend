@@ -1,4 +1,4 @@
-import "./LoadingCircle.css";
+import "./PreLoader.css";
 
 export default function PreLoader() {
   return (
