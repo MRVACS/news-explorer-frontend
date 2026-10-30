@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AppContext } from "../../contexts/AppContext.js";
 import NewsCard from "../NewsCard/NewsCard.jsx";
+import { CARDS_PER_PAGE } from "../../utils/Constants.js";
 import "./NewsCardList.css";
 
 export default function NewsCardList() {
-  /*   const [count, setCount] = useState(3); */
   const { cards, count, setCount } = useContext(AppContext);
   return (
     <>
@@ -17,7 +17,7 @@ export default function NewsCardList() {
         <button
           type="button"
           className="cardList__content-button"
-          onClick={() => setCount(count + 3)}
+          onClick={() => setCount(count + CARDS_PER_PAGE)}
         >
           Ver más
         </button>

@@ -9,7 +9,7 @@ export default function NewsCard(props) {
     year: "numeric",
   });
   return (
-    <div className="card">
+    <article className="card">
       <button
         className="card__save-button"
         type="button"
@@ -21,11 +21,13 @@ export default function NewsCard(props) {
           alt="Guardar noticia"
         />
       </button>
-      <img className="card__image" src={urlToImage} alt={title} />
+      {urlToImage && (
+        <img className="card__image" src={urlToImage} alt={title} />
+      )}
       <p className="card__date">{date}</p>
       <h2 className="card__title">{title}</h2>
       <p className="card__description">{description}</p>
       <h3 className="card__source">{source.name}</h3>
-    </div>
+    </article>
   );
 }

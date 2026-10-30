@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState /* useEffect */ } from "react";
 import Main from "../Main/Main";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -7,6 +7,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { AppContext } from "../../contexts/AppContext.js";
 import newsApi from "../../utils/NewsApi.js";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,6 +17,7 @@ function App() {
   const [search, setSearch] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [count, setCount] = useState(3);
+  const [error, setError] = useState("");
 
   function handleOpenPopup(popup) {
     setPopup(popup);
@@ -25,15 +27,22 @@ function App() {
   }
 
   async function handleNewsSearch(keyword) {
+    setSearch(true);
+    setError("");
     setCount(3);
     setIsLoading(true);
     try {
       const articles = await newsApi.getNews(keyword);
-      setIsLoading(false);
+
       setCards(articles);
-      setSearch(true);
     } catch (error) {
       console.error("Error fetching news:", error);
+      setCards([]);
+      setError(
+        "Lo sentimos, algo ha salido mal durante la solicitud. Puede que haya un problema de conexión o que el servidor no esté funcionando. Por favor, inténtalo más tarde."
+      );
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -41,14 +50,19 @@ function App() {
     <AppContext.Provider
       value={{
         isLoggedIn,
+        setIsLoggedIn,
+        popup,
+        handleClosePopup,
         cards,
         savedCards,
+        setSavedCards,
         handleOpenPopup,
         handleNewsSearch,
         search,
         isLoading,
         count,
         setCount,
+        error,
       }}
     >
       <div className="page">
@@ -64,7 +78,14 @@ function App() {
               />
             }
           ></Route>
-          <Route path="/saved-news" element={<SavedNews />} />
+          <Route
+            path="/saved-news"
+            element={
+              <ProtectedRoute>
+                <SavedNews />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
         <Footer />
       </div>

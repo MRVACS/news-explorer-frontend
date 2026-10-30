@@ -3,7 +3,7 @@ import { AppContext } from "../../contexts/AppContext.js";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import NewsCard from "../NewsCard/NewsCard.jsx";
 
-export default function SavedNews(props) {
+export default function SavedNews() {
   const { savedCards } = useContext(AppContext);
 
   return (

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink, /* useNavigate, */ useLocation } from "react-router-dom";
+import { NavLink /* useNavigate, */ /* useLocation */ } from "react-router-dom";
 import { AppContext } from "../../contexts/AppContext.js";
 import "./Navigation.css";
 import logoutIcon from "../../images/logout.png";
@@ -8,7 +8,7 @@ import LoginForm from "../PopupWithForm/LoginForm/LoginForm";
 export default function Navigation() {
   /*  const navigate = useNavigate(); */
   const { isLoggedIn, userData, handleOpenPopup } = useContext(AppContext);
-  const location = useLocation();
+  /* const location = useLocation(); */
   /*  const mainPage = location.pathname === "/";
   const savedNewsPage = location.pathname === "/saved-news"; */
   const loginPopup = { title: "Iniciar Sesión", children: <LoginForm /> };
@@ -32,10 +32,10 @@ export default function Navigation() {
             className="navigation__button"
             onClick={() => handleOpenPopup(loginPopup)}
           >
-            <p className="navigation__button-text">
-              {isLoggedIn ? userData.name : "Iniciar Sesión"}
-            </p>
-            <img className="navigation__icon" src={logoutIcon}></img>
+            <span className="navigation__button-text">
+              {isLoggedIn ? userData?.name : "Iniciar Sesión"}
+            </span>
+            <img className="navigation__icon" src={logoutIcon} alt="logout" />
           </button>
         </li>
       </ul>
