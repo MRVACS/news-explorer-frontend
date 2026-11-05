@@ -1,16 +1,13 @@
 import { useContext } from "react";
-import { NavLink /* useNavigate, */ /* useLocation */ } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AppContext } from "../../contexts/AppContext.js";
 import "./Navigation.css";
 import logoutIcon from "../../images/logout.png";
 import LoginForm from "../PopupWithForm/LoginForm/LoginForm";
 
 export default function Navigation() {
-  /*  const navigate = useNavigate(); */
   const { isLoggedIn, userData, handleOpenPopup } = useContext(AppContext);
-  /* const location = useLocation(); */
-  /*  const mainPage = location.pathname === "/";
-  const savedNewsPage = location.pathname === "/saved-news"; */
+
   const loginPopup = { title: "Iniciar Sesión", children: <LoginForm /> };
   return (
     <div className="navigation">

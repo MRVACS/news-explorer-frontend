@@ -34,9 +34,6 @@ export default function LoginForm() {
             Correo electrónico
           </label>
           <input
-            /* {...register("email", {
-              required: "La dirección de email es necesaria",
-            })} */
             aria-invalid={errors.email ? "true" : "false"}
             className="form__input"
             placeholder="Introduce tu correo electrónico"
@@ -46,20 +43,16 @@ export default function LoginForm() {
             onChange={handleChange}
             required
           />
-          {/* {errors.email?.type === "required" && ( */}
+
           <span role="alert" className="form__input-error">
-            errors.email
+            {errors.email}
           </span>
-          {/* )} */}
         </div>
         <div className="form__input-section">
           <label className="form__input-title" htmlFor="password">
             Contraseña
           </label>
           <input
-            /* {...register("password", {
-              required: "La contraseña es necesaria",
-            })} */
             aria-invalid={errors.password ? "true" : "false"}
             className="form__input"
             placeholder="Introduce tu contraseña"
@@ -67,12 +60,12 @@ export default function LoginForm() {
             id="password"
             name="password"
             onChange={handleChange}
+            required
           />
-          {/* {errors.password?.type === "required" && ( */}
+
           <span role="alert" className="form__input-error">
-            errors.password
+            {errors.password}
           </span>
-          {/* )} */}
         </div>
         <button type="submit" className="form__submit-button">
           Iniciar Sesión

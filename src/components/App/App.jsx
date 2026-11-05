@@ -1,4 +1,4 @@
-import { useState /* useEffect */ } from "react";
+import { useState } from "react";
 import Main from "../Main/Main";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
@@ -18,6 +18,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [count, setCount] = useState(3);
   const [error, setError] = useState("");
+  const [userData, setUserData] = useState({ name: "Elise" });
 
   function handleOpenPopup(popup) {
     setPopup(popup);
@@ -63,21 +64,13 @@ function App() {
         count,
         setCount,
         error,
+        userData,
       }}
     >
       <div className="page">
         <Header />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Main
-                handleOpenPopup={(popup) => handleOpenPopup(popup)}
-                handleClosePopup={() => handleClosePopup()}
-                popup={popup}
-              />
-            }
-          ></Route>
+          <Route path="/" element={<Main />}></Route>
           <Route
             path="/saved-news"
             element={

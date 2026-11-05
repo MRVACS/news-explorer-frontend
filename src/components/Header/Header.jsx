@@ -7,7 +7,7 @@ export default function Header() {
     <header className="header">
       <div className="header__container">
         <div className="header__content">
-          <h2 className="header__title">News Explorer</h2>
+          <p className="header__title">News Explorer</p>
           <Navigation />
         </div>
         <div className="header__search">

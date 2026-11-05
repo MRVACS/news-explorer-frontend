@@ -34,7 +34,7 @@ function Footer() {
             rel="noopener noreferrer"
             aria-label="GitHub"
           >
-            <img className="footer__icon" src={gitLogo} alt="Github logo" />
+            <img className="footer__icon" src={gitLogo} alt="" />
           </a>
           <a
             className="footer__button"
@@ -43,7 +43,7 @@ function Footer() {
             rel="noopener noreferrer"
             aria-label="Facebook"
           >
-            <img className="footer__icon" src={fbLogo} />
+            <img className="footer__icon" src={fbLogo} alt="" />
           </a>
         </div>
       </div>

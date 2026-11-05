@@ -80,11 +80,7 @@
   border: none;
   border-radius: 100px;
 }
-/* .form__search-input:focus {
-  background-color: inherit;
-  border: none;
-  outline: none;
-} */
+
 .form__search-input:-webkit-autofill,
 .form__search-input:-webkit-autofill:hover,
 .form__search-input:-webkit-autofill:focus {
@@ -94,7 +90,7 @@
 }
 input:focus {
   border: none;
-  outline: none;
+  outline: #fff;
 }
 
 @media (max-width: 768px) {
