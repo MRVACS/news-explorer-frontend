@@ -1,16 +1,9 @@
-# React + Vite
+News Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+El proyecto procura reflejar un buscador de noticias el cual tiene dos modalidades, la primera es la modalidad para usuarios no reguistrados que permite buscar noticias. La segunda permite registrarse para guardar las noticias de interés. El diseño del proyecto es responsivo y funciona en pantallas de distintos tamaños.
 
-Currently, two official plugins are available:
+El proyecto utiliza las siguientes tecnologías: CSS, HTML, JavaScript, React, Node y MongoDB.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Se implementa la comunicación con API externa que maneja las solicitudes de búsqueda y la comunicación con una API interna que maneja los datos de los usuarios para su autenticación. La API externa requiere de una llave, esta se encuentra configurada en el archivo .env.local y allí mismo se puede editar en caso de que se necesite.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+El subdominio en donde está desplegado el proyecto es:
