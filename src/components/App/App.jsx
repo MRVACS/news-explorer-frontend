@@ -77,6 +77,14 @@ function App() {
     }
   }
 
+  const handleSignup = ({ email, password }) => {
+    auth.register(email, password).catch((err) => {
+      if (err.status === 400) {
+        console.log('uno de los campos se rellenó de forma incorrecta');
+      }
+    });
+  };
+
   const handleLogin = ({ email, password }) => {
     if (!email || !password) {
       return;
@@ -140,6 +148,7 @@ function App() {
         error,
         userData,
         handleLogin,
+        handleSignup,
         currentUser,
       }}
     >

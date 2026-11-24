@@ -1,19 +1,19 @@
-import { useContext, useState } from "react";
-import { AppContext } from "../../../contexts/AppContext.js";
-import LoginForm from "../LoginForm/LoginForm";
-import "./SignupForm.css";
+import { useContext, useState } from 'react';
+import { AppContext } from '../../../contexts/AppContext.js';
+import LoginForm from '../LoginForm/LoginForm';
+import './SignupForm.css';
 
 export default function SignupForm() {
-  const { handleOpenPopup } = useContext(AppContext);
-  const loginPopup = { title: "Iniciar Sesión", children: <LoginForm /> };
+  const { handleOpenPopup, handleSignup } = useContext(AppContext);
+  const loginPopup = { title: 'Iniciar Sesión', children: <LoginForm /> };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    /* handleSignup(data); */
+    handleSignup(values);
   };
 
-  const [values, setValues] = useState({ email: "", password: "" });
+  const [values, setValues] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -30,7 +30,7 @@ export default function SignupForm() {
             Correo electrónico
           </label>
           <input
-            aria-invalid={errors.email ? "true" : "false"}
+            aria-invalid={errors.email ? 'true' : 'false'}
             className="form__input"
             placeholder="Introduce tu correo electrónico"
             type="email"
@@ -49,7 +49,7 @@ export default function SignupForm() {
             Contraseña
           </label>
           <input
-            aria-invalid={errors.password ? "true" : "false"}
+            aria-invalid={errors.password ? 'true' : 'false'}
             className="form__input"
             placeholder="Introduce tu contraseña"
             type="password"
@@ -68,7 +68,7 @@ export default function SignupForm() {
             Nombre de usuario
           </label>
           <input
-            aria-invalid={errors.username ? "true" : "false"}
+            aria-invalid={errors.username ? 'true' : 'false'}
             className="form__input"
             placeholder="Introduce tu nombre de usuario"
             type="text"
