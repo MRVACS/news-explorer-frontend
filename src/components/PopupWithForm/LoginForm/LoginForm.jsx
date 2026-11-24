@@ -1,22 +1,14 @@
-import { useContext, useState } from "react";
-/* import { useForm } from "react-hook-form"; */
-import SignupForm from "../SignupForm/SignupForm";
-import "./LoginForm.css";
-import { AppContext } from "../../../contexts/AppContext.js";
+import { useContext, useState } from 'react';
+import SignupForm from '../SignupForm/SignupForm';
+import './LoginForm.css';
+import { AppContext } from '../../../contexts/AppContext.js';
 
 export default function LoginForm() {
-  const { handleOpenPopup } = useContext(AppContext);
-  /* const {
-    register,
-    formState: { errors },
-  } = useForm(); */
-  const signupPopup = { title: "Inscribirse", children: <SignupForm /> };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    /* handleLogin(data); */
-  };
+  const { handleOpenPopup, handleLogin } = useContext(AppContext);
 
-  const [values, setValues] = useState({ email: "", password: "" });
+  const signupPopup = { title: 'Inscribirse', children: <SignupForm /> };
+
+  const [values, setValues] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -24,7 +16,10 @@ export default function LoginForm() {
     setValues({ ...values, [name]: value });
     setErrors({ ...errors, [name]: validationMessage });
   };
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogin(values);
+  };
   return (
     <div className="login">
       <form className="login__form form" onSubmit={handleSubmit}>
@@ -34,7 +29,7 @@ export default function LoginForm() {
             Correo electrónico
           </label>
           <input
-            aria-invalid={errors.email ? "true" : "false"}
+            aria-invalid={errors.email ? 'true' : 'false'}
             className="form__input"
             placeholder="Introduce tu correo electrónico"
             type="email"
@@ -53,7 +48,7 @@ export default function LoginForm() {
             Contraseña
           </label>
           <input
-            aria-invalid={errors.password ? "true" : "false"}
+            aria-invalid={errors.password ? 'true' : 'false'}
             className="form__input"
             placeholder="Introduce tu contraseña"
             type="password"
